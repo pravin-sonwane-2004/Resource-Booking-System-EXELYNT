@@ -1,0 +1,46 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  application:
+    name: Resource-Booking
+  output:
+    ansi:
+      enabled: always
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/exelynt?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC}
+    username: ${SPRING_DATASOURCE_USERNAME:root}
+    password: ${SPRING_DATASOURCE_PASSWORD:0000}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    show-sql: ${SPRING_JPA_SHOW_SQL:false}
+    hibernate:
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:update}
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+  jackson:
+    default-property-inclusion: non_null
+
+# Application JWT settings
+app:
+  jwt:
+    # Base64-encoded secret with at least 256 bits (HS256). Override via environment variable.
+    secret: ${JWT_SECRET:Q0xpbmUtUmVzb3VyY2UtQm9va2luZy1TZWNyZXQtS2V5LWZvci1IUzI1Ni1hbmQtSldULXRva2VuLXZlcmlmaWNhdGlvbi0yMDI2}
+    # Token validity in milliseconds (24 hours by default)
+    expiration: ${JWT_EXPIRATION:86400000}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+    tags-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+
+logging:
+  level:
+    org.springframework.security: ${SPRING_SECURITY_LOG_LEVEL:INFO}
