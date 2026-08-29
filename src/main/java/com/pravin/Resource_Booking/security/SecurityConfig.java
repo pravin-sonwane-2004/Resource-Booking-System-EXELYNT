@@ -1,6 +1,7 @@
 package com.pravin.Resource_Booking.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.pravin.Resource_Booking.dto.common.ApiError;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;
@@ -94,6 +95,7 @@ public class SecurityConfig {
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setCharacterEncoding("UTF-8");
         ApiError body = ApiError.of(status, error, message, null);
-        new ObjectMapper().writeValue(response.getWriter(), body);
+        ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
+        mapper.writeValue(response.getWriter(), body);
     }
 }
