@@ -34,6 +34,7 @@ It lets regular users view available resources and create/manage their own reser
 | Security   | Spring Security, JJWT 0.12, BCrypt                |
 | Database   | MySQL (H2 in-memory for tests)                    |
 | ORM        | Hibernate / Spring Data JPA                       |
+| Boilerplate| Project Lombok (getters/setters/constructors)     |
 | Validation | Jakarta Bean Validation                           |
 | Docs       | springdoc-openapi (Swagger UI)                    |
 | Build      | Maven                                            |
